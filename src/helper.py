@@ -5,7 +5,6 @@ import sqlite3
 import re
 
 class Videogames(object):
-    
     def __init__(self, database_dir):
         self.database_dir = database_dir
         self.table = ""
@@ -37,16 +36,17 @@ class Videogames(object):
         return self._dtypes
     
     def get_status(self):
+        """
+        
+        Returns:
+            Boolean: whether we have loaded the data from csv
+        """
         return self._has_data
     
-    def get_headers(self, data):
-        if not self._headers:
-            self._headers = list(map(lambda col: col.lower(), data.columns))
+    def get_headers(self):
         return self._headers
 
-    def get_dtypes(self, data):
-        if not self._dtypes:
-            self._dtypes = [self._process_dtype(type(data[col][0])) for col in data.columns]
+    def get_dtypes(self):
         return self._dtypes
     
     def read_data_in(self, filepath, table, write_headers=False):
@@ -55,8 +55,8 @@ class Videogames(object):
         data = pd.read_csv(filepath, delimiter=",", encoding="unicode_escape")
         
         self.table = table
-        headers = self.get_headers(data)
-        dtypes = self.get_dtypes(data)
+        headers = self._get_headers(data)
+        dtypes = self._get_dtypes(data)
         self._create_table(headers, dtypes, cur)
         
         if write_headers:
@@ -91,7 +91,25 @@ class Videogames(object):
             print("ILLEGAL COMMAND")
 
 
-    ## Helper Functions ##        
+    ## Helper Functions ##  
+    def _get_headers(self, data):
+        """Return the headers of the data
+
+        Args:
+            data DataFrame: the data we read from csv.
+
+        Returns:
+            list: the headers of the data
+        """
+        if not self._headers:
+            self._headers = list(map(lambda col: col.lower(), data.columns))
+        return self._headers
+    
+    def _get_dtypes(self, data):
+        if not self._dtypes:
+            self._dtypes = [self._process_dtype(type(data[col][0])) for col in data.columns]
+        return self._dtypes
+       
     def _create_table(self, headers, dtypes, cur):
         command = "CREATE TABLE IF NOT EXISTS {0} (".format(self.table)
         template = "{0} {1}"
@@ -108,7 +126,7 @@ class Videogames(object):
         
         for i, itr in data.iterrows():
             res = list(map(self._str_classifier, list(itr)))
-            command = command_template.format(table_name, ", ".join(headers), self._list2str(res, dtypes))
+            command = command_template.format(self.table, ", ".join(headers), self._list2str(res, dtypes))
             cur.execute(command)
 
     def _list2str(self, data, dtypes):
@@ -135,4 +153,5 @@ class Videogames(object):
         return type_converter[dtype]
     
     def _col2list(self, col):
-        return list(map(lambda x: x[0], col))
+        n = len(col[0])
+        return list(map(lambda x: list(x)[:n], col))
