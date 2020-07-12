@@ -79,8 +79,8 @@ class Videogames(object):
         if not self._connection:
             self._connection = sqlite3.connect(self.database_dir)
         cur = self._connection
-        
-        if bool(re.match("^SELECT", command, re.I)):
+
+        if bool(re.match("^[ \t\n]*SELECT", command, re.I)):
             return list(self._col2list(cur.execute(command).fetchall()))
         else:
             print("ILLEGAL COMMAND")
@@ -102,7 +102,8 @@ class Videogames(object):
     
     def _get_dtypes(self, data):
         if not self._dtypes:
-            self._dtypes = [self._process_dtype(type(data[col][0])) for col in data.columns]
+            print([(data[col][0], type(data[col][0])) for col in data.columns])
+            self._dtypes = [self._process_dtype(data[col][0]) for col in data.columns]
         return self._dtypes
        
     def _create_table(self, headers, dtypes, cur):
@@ -164,7 +165,7 @@ class Videogames(object):
         def classifier(x):
             i = data.index(x)
             if dtypes[i] == "NUMBER":
-                if x == "NULL":
+                if x == "NULL" or x == 'tbd':
                     return "-1"
                 else:
                     return str(x)
@@ -175,10 +176,13 @@ class Videogames(object):
     def _str_classifier(self, x):
         ### classify the data so that it does not contain nan
         if type(x) == float and np.isnan(x):
-            return "NULL"
+            return -1
         return x
 
-    def _process_dtype(self, dtype):
+    def _process_dtype(self, var):
+        dtype = type(var)
+        if dtype == str and var.isnumeric():
+            return "NUMBER"
         type_converter = {type(',') : "VARCHAR(80)", np.float64: "NUMBER"}
         return type_converter[dtype]
     
