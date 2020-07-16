@@ -1,42 +1,62 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.linear_model import Ridge
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.pipeline import make_pipeline
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
 from helper import Videogames
+from models import *
 
-if __name__ == "__main__":
+
+def read_data():
     videogames = Videogames("./data/math156.db")
     videogames.read_data_in("./data/videogames.csv", "VIDEOGAMES", True)
     res = np.array(videogames.execute('''
-        SELECT name, jp_total, cscore FROM (
+        SELECT name, jp_total, cscore, uscore, genre, publisher FROM (
             SELECT name AS name,
                    SUM(JP_sales) AS jp_total,
-                   critic_score AS cscore
+                   critic_score AS cscore,
+                   user_score AS uscore,
+                   genre AS genre,
+                   publisher AS publisher
             FROM VIDEOGAMES 
-            WHERE critic_score != -1 and year_of_release >=2010
+            WHERE user_score != -1 and critic_score != -1
             GROUP BY name) AS VideogameSummary
-        WHERE jp_total != 0.0 and cscore >= 1
+        WHERE jp_total != 0.0 and cscore >= 1 and uscore >= 1
         ORDER BY jp_total DESC;
         '''))
-    xs = np.array(res[:, 2], dtype=np.float64)
-    xs.shape = (len(xs), 1)
-    ys = np.array(res[:, 1], dtype=np.float64)
+    return res
 
-    model = make_pipeline(PolynomialFeatures(3), Ridge())
-    model.fit(xs, ys)
+if __name__ == "__main__":
+    res = read_data()
+    ## the critical scores and user scores
+    scores = np.array(res[:, 2:4], dtype=np.float64)
 
-    newxs = np.linspace(0, 100, 1000)
-    temp = newxs.copy()
-    temp.shape = (len(newxs), 1)
-    newys = model.predict(temp)
+    jptotal = np.array(res[:, 1], dtype=np.float64)
+    jptotal.shape = (len(jptotal), 1)
 
-    plt.plot(xs, ys, 'r*', newxs, newys, 'b-')
-    plt.savefig('jpsales.png', bboxes_inches='tight')
-    print(model.score(xs, ys))
-    print(model.predict([[9]]))
+    ## transform categorical data into dummy variables
+    genre = res[:, 4]
+    ## avoids inter-correlation by dropping a col
+    genre = np.array(pd.get_dummies(data=genre, drop_first=True))
+    publisher = res[:, 5]
+    publisher = np.array(pd.get_dummies(data=publisher, drop_first=True))
 
-    
+    X = np.concatenate((scores, genre, publisher), axis=1)
+    Y = jptotal
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .20, random_state = 40)
+
+    ## Linear Regression
+    lregr = linear_model(X_train, Y_train.ravel(), 2)
+
+    ## Random Forest
+    rfregr = random_forest(X_train, Y_train.ravel())
+
+    ## KNN
+    knnregr = knn(X_train, Y_train, 5)
+
+    r2_template = "R^2\t{name:20}{value:18}"
+    print(r2_template.format(name="random forest", value=rfregr.score(X_test, Y_test)))
+    print(r2_template.format(name="Knn", value=knnregr.score(X_test, Y_test)))
+    print(r2_template.format(name="linear regression", value=lregr.score(X_test, Y_test)))
     
     
