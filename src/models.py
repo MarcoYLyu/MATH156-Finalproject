@@ -5,6 +5,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
 
+## just in case someone wants to implement them instead of using sklearn
+
 def knn(xs, ys, n):
     model = KNeighborsRegressor(n_neighbors=n).fit(xs, ys)
     return model
