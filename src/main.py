@@ -15,7 +15,7 @@ def read_data():
     res = np.array(videogames.execute('''
         SELECT name, g_total, cscore, uscore, genre, publisher FROM (
             SELECT name AS name,
-                   SUM(Global_Sales) AS g_total,
+                   SUM(global_sales) AS g_total,
                    critic_score AS cscore,
                    user_score AS uscore,
                    genre AS genre,
