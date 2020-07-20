@@ -1,17 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import os
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-from helper import Videogames
+from helper import Videogames, getWorkDir
 from models import *
 
 
 def read_data():
-    videogames = Videogames("./data/math156.db")
-    videogames.read_data_in("./data/videogames.csv", "VIDEOGAMES", True)
+    videogames = Videogames(os.path.join(getWorkDir() ,"data/math156.db"))
+    videogames.read_data_in(os.path.join(getWorkDir() ,"data/videogames.csv"), "VIDEOGAMES", True)
     res = np.array(videogames.execute('''
         SELECT name, g_total, cscore, uscore, genre, publisher FROM (
             SELECT name AS name,

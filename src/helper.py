@@ -3,6 +3,20 @@ import pandas as pd
 import pickle
 import sqlite3
 import re
+import os
+
+
+
+
+
+def getWorkDir():
+    pathlist = os.path.abspath(os.curdir).split('/')
+    path = '/'
+    for p in pathlist:
+        path = os.path.join(path, p)
+        if p == 'video-game-sales-predictor' or p == 'video-game-sales-predictor-master':
+            break
+    return path
 
 class Videogames(object):
     def __init__(self, database_dir):
@@ -14,7 +28,7 @@ class Videogames(object):
         self._dtypes = []
         self._connection = None
         try:
-            with open('./data/data.pickle', "rb") as f:
+            with open(os.path.join(getWorkDir() ,'data/data.pickle'), "rb") as f:
                 self.table, self._headers, self._dtypes, self._has_data = pickle.load(f)
         except:
             pass
@@ -55,11 +69,11 @@ class Videogames(object):
         self._create_table(headers, dtypes, cur)
         
         if write_headers:
-            with open('./data/headers.csv', "w+") as f:
+            with open(os.path.join(getWorkDir() ,'data/headers.csv'), "w+") as f:
                 f.write(", \n".join(headers))
         
         if not self._has_data:
-            with open("./data/data.pickle", "wb+") as f:
+            with open(os.path.join(getWorkDir() ,"data/data.pickle"), "wb+") as f:
                 self._insert_data(data, headers, dtypes, cur)
                 pickle.dump((self.table, headers, dtypes, True), f, pickle.HIGHEST_PROTOCOL)
         
