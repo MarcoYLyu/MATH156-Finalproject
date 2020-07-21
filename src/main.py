@@ -29,10 +29,10 @@ def read_data():
         '''))
     return res
 
-def feature_score(X):
-    #X = StandardScaler().fit_transform(X)
+def feature_transform(X):
     pca = PCA(n_components=4).fit(X)
-    return pca.explained_variance_ratio_
+    print("The score for principal component analysis: ", pca.explained_variance_ratio_)
+    return pca.transform(X)
 
 def get_freqs(data):
     """Get the frequency table for categorical data
@@ -85,12 +85,7 @@ if __name__ == "__main__":
     genre = np.array(pd.get_dummies(data=res[:, 4], drop_first=True))
     publisher = np.array(pd.get_dummies(data=res[:, 5], drop_first=True))
 
-    ## principal component analysis
-    X = np.concatenate((scores, genre, publisher), axis=1)
-    print("The score for principal component analysis: ", feature_score(X))
-
-    ## The above tells us that critical score can basically represent all other factors
-    X = np.array(res[:, 2:3], dtype=np.float64)
+    X = feature_transform(np.concatenate((scores, genre, publisher), axis=1))
     Y = gtotal
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .20, random_state = 40)
 
