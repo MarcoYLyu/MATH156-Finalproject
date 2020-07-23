@@ -29,17 +29,29 @@ def read_data():
         '''))
     return res
 
-def plot_sales(sales):
-    bins = np.arange(0, 11, 1)
-    plt.hist(sales, bins, color='b')
-    plt.savefig('sales.png', bbox_inches='tight')
-    plt.clf()
-
 def predict(X_test, Y_test, model):
+    """Predict the sales based on the dataset
+
+    Args:
+        X_test (DataFrame): Data
+        Y_test (Series): Actual Sales
+        model (object): Model we are using
+
+    Returns:
+        Series: predicted scales
+    """
     temp = model.predict(X_test)
     return pd.Series(model.predict(X_test))
 
 def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
+    """Plot the predicted sales
+
+    Args:
+        xs (Series): the x values
+        data_ys (Series): the actual sales
+        predict_ys (Series): the predicted sales
+        model_name (str, optional): the name of the model. Defaults to 'Unknown'.
+    """
     xs = xs.astype(np.float64)
     fig, (ax1, ax2) = plt.subplots(1, 2, sharex=True, sharey=True)
     plt.xticks(np.linspace(0, 100, 11))
@@ -58,18 +70,31 @@ def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
     plt.clf()
 
 def plot_predictions(X_test, Y_test, gregr, rfregr, knnregr):
+    """Plot the Predicted sales of each model
+
+    Args:
+        X_test (DataFrame): data
+        Y_test (Series): actual sales
+        gregr (GammaRegressor): Gamma Regressor
+        rfregr (RandomForestRegressor): Random Forest Regressor
+        knnregr (KNNRegressor): KNN Regressor
+    """
     cscores = X_test['cscore']
+    ## Get predicted sales
     gres = predict(X_test, Y_test, gregr)
     rfres = predict(X_test, Y_test, rfregr)
     knnres = predict(X_test, Y_test, knnregr)
 
+    ## Correct the indices in case
     temp = pd.DataFrame(pd.concat([cscores, Y_test], axis=1).to_numpy(),
                         columns=['cscore', 'gtotal'],
                         index=np.arange(0, len(cscores), 1))
 
+    ## Create a pandas DataFrame sorted by Critical Score
     df = pd.concat([temp, gres, rfres, knnres], axis=1)
     df = pd.DataFrame(df.sort_values(by='cscore', ascending=True).to_numpy(),
                 columns=['cscore', 'gtotal', 'gres', 'rfres', 'knnres'])
+
     plot_helper(df['cscore'], df['gtotal'], df['rfres'], 'Random Forest')
     plot_helper(df['cscore'], df['gtotal'], df['knnres'], 'KNN')
     plot_helper(df['cscore'], df['gtotal'], df['gres'], 'Gamma Regression')
@@ -87,16 +112,7 @@ if __name__ == "__main__":
     
     Y = res['gtotal'].astype('float64')
 
-    #plot_sales(Y)
-
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .20, random_state = 40)
-
-    ## Apply principal component analysis on the sample set
-    """
-    pca = PCA(n_components=10).fit(X_train)
-    X_train = pca.transform(X_train)
-    X_test = pca.transform(X_test)
-    """
 
     ## Gamma Regression
     gregr = gamma_model(X_train, Y_train.ravel())
@@ -107,7 +123,7 @@ if __name__ == "__main__":
     ## KNN
     knnregr = knn(X_train, Y_train.ravel(), 6)
 
-    plot_predictions(X, Y, gregr, rfregr, knnregr)
+    plot_predictions(X_test, Y_test, gregr, rfregr, knnregr)
 
     r2_template = 'R^2\t{name:20}{value:18}'
     print(r2_template.format(name='random forest', value=rfregr.score(X_test, Y_test)))
