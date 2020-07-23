@@ -10,10 +10,12 @@ from sklearn.metrics import mean_squared_error
 from helper import Videogames, getWorkDir
 from models import *
 
+def get_dir(path):
+    return os.path.join(getWorkDir(), path)
 
 def read_data():
-    videogames = Videogames(os.path.join(getWorkDir() ,"data/math156.db"))
-    videogames.read_data_in(os.path.join(getWorkDir() ,"data/videogames.csv"), "VIDEOGAMES", True)
+    videogames = Videogames(get_dir("data/math156.db"))
+    videogames.read_data_in(get_dir("data/videogames.csv"), "VIDEOGAMES", True)
     res = np.array(videogames.execute('''
         SELECT name, g_total, cscore, uscore, genre, publisher FROM (
             SELECT name AS name,
@@ -25,7 +27,7 @@ def read_data():
             FROM VIDEOGAMES 
             WHERE user_score != -1 and critic_score != -1 and year_of_release >= 2010
             GROUP BY name) AS VideogameSummary
-        WHERE g_total != 0 and cscore >= 1 and uscore >= 1
+        WHERE g_total != 0 and cscore >= 1 and uscore >= 1 and g_total <= 20
         ORDER BY g_total DESC;
         '''))
     return res
@@ -67,7 +69,11 @@ def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
     ax2.set_title('Predicted Sales')
     ax2.set(xlabel='Critical Score', ylabel='Global Sales (million)')
 
-    plt.savefig('{0}.png'.format(model_name.replace(' ', '_').lower()), bbox_inches='tight')
+    pic_path = 'graphs/{0}.png'.format(model_name.replace(' ', '_').lower())
+
+    pic_dir = get_dir(pic_path)
+
+    plt.savefig(pic_dir, bbox_inches='tight')
     plt.clf()
 
 def plot_predictions(X_test, Y_test, gregr, rfregr, knnregr):
@@ -108,6 +114,11 @@ if __name__ == "__main__":
     ## the critical scores and user scores
     columns = ['name', 'gtotal', 'cscore', 'uscore', 'genre', 'publisher']
     res = pd.DataFrame(read_data(), columns=columns)
+    n = len(res)
+    factor = 0.05
+    quantile1 = round(n * factor)
+    quantile2 = n - round(n * factor)
+    res = res.loc[quantile1:quantile2 + 1, :]
 
     scores = res[['cscore', 'uscore']]
     genre = pd.get_dummies(res['genre'], drop_first=True)
