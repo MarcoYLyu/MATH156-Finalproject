@@ -24,73 +24,82 @@ def read_data():
             FROM VIDEOGAMES 
             WHERE user_score != -1 and critic_score != -1 and year_of_release >= 2010
             GROUP BY name) AS VideogameSummary
-        WHERE g_total != 0.0 and cscore >= 1 and uscore >= 1
+        WHERE g_total != 0 and cscore >= 1 and uscore >= 1
         ORDER BY g_total DESC;
         '''))
     return res
 
-def feature_transform(X):
-    pca = PCA(n_components=4).fit(X)
-    print("The score for principal component analysis: ", pca.explained_variance_ratio_)
-    return pca.transform(X)
+def plot_sales(sales):
+    bins = np.arange(0, 11, 1)
+    plt.hist(sales, bins, color='b')
+    plt.savefig('sales.png', bbox_inches='tight')
+    plt.clf()
 
-def get_freqs(data):
-    """Get the frequency table for categorical data
+def predict(X_test, Y_test, model):
+    temp = model.predict(X_test)
+    return pd.Series(model.predict(X_test))
 
-    Args:
-        data (array): the categorical data
+def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
+    xs = xs.astype(np.float64)
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharex=True, sharey=True)
+    plt.xticks(np.linspace(0, 100, 11))
+
+    fig.suptitle(model_name)
+
+    ax1.plot(xs, data_ys, 'k+', label='data')
+    ax1.set_title('Actual Sales')
+    ax1.set(xlabel='Critical Score', ylabel='Global Sales (million)')
     
-    Returns:
-        a dictionary mapping categorical data to their frequency
-    """
-    table = {}
-    for datum in data:
-        if datum not in table:
-            table[datum] = 1
-        else:
-            table[datum] += 1
-    return table
+    ax2.plot(xs, predict_ys, 'y*', label='prediction')
+    ax2.set_title('Predicted Sales')
+    ax2.set(xlabel='Critical Score', ylabel='Global Sales (million)')
 
-def transform_categorical(data):
-    """Transform the categorical data to frequencies
+    plt.savefig('{0}.png'.format(model_name.replace(' ', '_').lower()), bbox_inches='tight')
+    plt.clf()
 
-    Introduced as an alternative for dummy variables.
-    Seems to work better for random forest and knn than
-    the dummy ones.
+def plot_predictions(X_test, Y_test, gregr, rfregr, knnregr):
+    cscores = X_test['cscore']
+    gres = predict(X_test, Y_test, gregr)
+    rfres = predict(X_test, Y_test, rfregr)
+    knnres = predict(X_test, Y_test, knnregr)
 
-    Args:
-        data (array): the categorical data
+    temp = pd.DataFrame(pd.concat([cscores, Y_test], axis=1).to_numpy(),
+                        columns=['cscore', 'gtotal'],
+                        index=np.arange(0, len(cscores), 1))
 
-    Returns:
-        (np.array): n * 1 array where each row 
-        corresponds to the frequency of the category
-    """
-    freqtable = get_freqs(data)
-    res = []
-    for datum in data:
-        res.append([freqtable[datum]])
-    return np.array(res)
-    
+    df = pd.concat([temp, gres, rfres, knnres], axis=1)
+    df = pd.DataFrame(df.sort_values(by='cscore', ascending=True).to_numpy(),
+                columns=['cscore', 'gtotal', 'gres', 'rfres', 'knnres'])
+    plot_helper(df['cscore'], df['gtotal'], df['rfres'], 'Random Forest')
+    plot_helper(df['cscore'], df['gtotal'], df['knnres'], 'KNN')
+    plot_helper(df['cscore'], df['gtotal'], df['gres'], 'Gamma Regression')
 
 if __name__ == "__main__":
-    res = read_data()
     ## the critical scores and user scores
-    scores = np.array(res[:, 2:4], dtype=np.float64)
+    columns = ['name', 'gtotal', 'cscore', 'uscore', 'genre', 'publisher']
+    res = pd.DataFrame(read_data(), columns=columns)
 
-    gtotal = np.array(res[:, 1], dtype=np.float64)
-    gtotal.shape = (len(gtotal), 1)
+    scores = res[['cscore', 'uscore']]
+    genre = pd.get_dummies(res['genre'], drop_first=True)
+    publisher = pd.get_dummies(res['publisher'], drop_first=True)
 
-    ## transform categorical data into dummy variables
-    ## avoids inter-correlation by dropping a col
-    genre = np.array(pd.get_dummies(data=res[:, 4], drop_first=True))
-    publisher = np.array(pd.get_dummies(data=res[:, 5], drop_first=True))
+    X = pd.concat((scores, genre, publisher), axis=1)
+    
+    Y = res['gtotal'].astype('float64')
 
-    X = feature_transform(np.concatenate((scores, genre, publisher), axis=1))
-    Y = gtotal
+    #plot_sales(Y)
+
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .20, random_state = 40)
 
-    ## Linear Regression
-    lregr = linear_model(X_train, Y_train.ravel(), 7)
+    ## Apply principal component analysis on the sample set
+    """
+    pca = PCA(n_components=10).fit(X_train)
+    X_train = pca.transform(X_train)
+    X_test = pca.transform(X_test)
+    """
+
+    ## Gamma Regression
+    gregr = gamma_model(X_train, Y_train.ravel())
 
     ## Random Forest
     rfregr = random_forest(X_train, Y_train.ravel())
@@ -98,15 +107,9 @@ if __name__ == "__main__":
     ## KNN
     knnregr = knn(X_train, Y_train.ravel(), 6)
 
-    r2_template = "R^2\t{name:20}{value:18}"
-    print(r2_template.format(name="random forest", value=rfregr.score(X_test, Y_test)))
-    print(r2_template.format(name="Knn", value=knnregr.score(X_test, Y_test)))
-    print(r2_template.format(name="linear regression", value=lregr.score(X_test, Y_test)))
+    plot_predictions(X, Y, gregr, rfregr, knnregr)
 
-
-    """
-    ## Plot linear regression
-    newxs = np.linspace(0, 100, 10000)
-    plt.plot(X, Y, 'r+', newxs, lregr.predict(newxs.reshape(-1, 1)), 'b-')
-    plt.savefig('global.png', bbox_inches='tight')
-    """
+    r2_template = 'R^2\t{name:20}{value:18}'
+    print(r2_template.format(name='random forest', value=rfregr.score(X_test, Y_test)))
+    print(r2_template.format(name='Knn', value=knnregr.score(X_test, Y_test)))
+    print(r2_template.format(name='Gamma regression', value=gregr.score(X_test, Y_test)))
