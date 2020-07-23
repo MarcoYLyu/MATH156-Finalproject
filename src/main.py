@@ -5,6 +5,7 @@ import os
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error
 
 from helper import Videogames, getWorkDir
 from models import *
@@ -99,6 +100,10 @@ def plot_predictions(X_test, Y_test, gregr, rfregr, knnregr):
     plot_helper(df['cscore'], df['gtotal'], df['knnres'], 'KNN')
     plot_helper(df['cscore'], df['gtotal'], df['gres'], 'Gamma Regression')
 
+def rmse(X_test, Y_test, model):
+    Y_pred = model.predict(X_test)
+    return mean_squared_error(Y_test, Y_pred, squared=False)
+
 if __name__ == "__main__":
     ## the critical scores and user scores
     columns = ['name', 'gtotal', 'cscore', 'uscore', 'genre', 'publisher']
@@ -125,7 +130,14 @@ if __name__ == "__main__":
 
     plot_predictions(X_test, Y_test, gregr, rfregr, knnregr)
 
-    r2_template = 'R^2\t{name:20}{value:18}'
+    rmse_template='RMSE\t{name:25}{value:18}'
+    print(rmse_template.format(name='random forest', value=rmse(X_test, Y_test, rfregr)))
+    print(rmse_template.format(name='Knn', value=rmse(X_test, Y_test, knnregr)))
+    print(rmse_template.format(name='Gamma regression', value=rmse(X_test, Y_test, gregr)))
+
+    print('===================')
+
+    r2_template = 'R^2\t{name:25}{value:18}'
     print(r2_template.format(name='random forest', value=rfregr.score(X_test, Y_test)))
     print(r2_template.format(name='Knn', value=knnregr.score(X_test, Y_test)))
     print(r2_template.format(name='Gamma regression', value=gregr.score(X_test, Y_test)))
