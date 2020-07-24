@@ -7,11 +7,8 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
-from helper import Videogames, getWorkDir
+from helper import Videogames, getWorkDir, get_dir
 from models import *
-
-def get_dir(path):
-    return os.path.join(getWorkDir(), path)
 
 def read_data():
     videogames = Videogames(get_dir("data/math156.db"))

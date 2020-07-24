@@ -5,9 +5,10 @@ import sqlite3
 import re
 import os
 
+__all__ = ['Videogames']
 
-
-
+def get_dir(path):
+    return os.path.join(getWorkDir(), path)
 
 def getWorkDir():
     pathlist = os.path.abspath(os.curdir).split('/')
@@ -19,16 +20,18 @@ def getWorkDir():
     return path
 
 class Videogames(object):
-    def __init__(self, database_dir):
+    def __init__(self, database_dir, data_dir='data/', storage='data'):
         self.database_dir = database_dir
-        self.table = ""
+        self.table = ''
+        self.data_dir = data_dir
+        self.storage = '{0}.pickle'.format(storage)
         
         self._has_data = False
         self._headers = []
         self._dtypes = []
         self._connection = None
         try:
-            with open(os.path.join(getWorkDir() ,'data/data.pickle'), "rb") as f:
+            with open(get_dir(data_dir + storage), "rb") as f:
                 self.table, self._headers, self._dtypes, self._has_data = pickle.load(f)
         except:
             pass
@@ -69,12 +72,13 @@ class Videogames(object):
         self._create_table(headers, dtypes, cur)
         
         if write_headers:
-            with open(os.path.join(getWorkDir() ,'data/headers.csv'), "w+") as f:
+            with open(get_dir(self.data_dir + 'headers.csv'), "w+") as f:
                 f.write(", \n".join(headers))
         
         if not self._has_data:
-            with open(os.path.join(getWorkDir() ,"data/data.pickle"), "wb+") as f:
+            with open(get_dir(self.data_dir + self.storage), "wb+") as f:
                 self._insert_data(data, headers, dtypes, cur)
+                self._has_data = True
                 pickle.dump((self.table, headers, dtypes, True), f, pickle.HIGHEST_PROTOCOL)
         
         del data
@@ -197,7 +201,7 @@ class Videogames(object):
         dtype = type(var)
         if dtype == str and var.isnumeric():
             return "NUMBER"
-        type_converter = {type(',') : "VARCHAR(80)", np.float64: "NUMBER"}
+        type_converter = {type(',') : "VARCHAR(80)", np.float64: "NUMBER", np.int64: "NUMBER"}
         return type_converter[dtype]
     
     def _col2list(self, col):
