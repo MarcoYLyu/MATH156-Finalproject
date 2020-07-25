@@ -9,7 +9,7 @@ from sklearn.neighbors import KNeighborsRegressor
 ## just in case someone wants to implement them instead of using sklearn
 
 def knn(xs, ys, n):
-    model = KNeighborsRegressor(n_neighbors=n).fit(xs, ys)
+    model = KNeighborsRegressor(n_neighbors=n, algorithm='kd_tree').fit(xs, ys)
     return model
 
 def gamma_model(xs, ys):

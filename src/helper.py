@@ -31,7 +31,7 @@ class Videogames(object):
         self._dtypes = []
         self._connection = None
         try:
-            with open(get_dir(data_dir + storage), "rb") as f:
+            with open(get_dir(data_dir + self.storage), "rb") as f:
                 self.table, self._headers, self._dtypes, self._has_data = pickle.load(f)
         except:
             pass
