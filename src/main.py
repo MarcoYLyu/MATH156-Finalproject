@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 import os
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
@@ -73,6 +74,22 @@ def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
     plt.savefig(pic_dir, bbox_inches='tight')
     plt.clf()
 
+def plot_helper2(data_ys, predicted_ys, model_name='Unknown'):
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharex=True, sharey=True)
+    fig.suptitle(model_name)
+
+    bins = np.arange(0, 6, 0.1)
+    sns.distplot(data_ys, bins=bins, hist=True, kde=True, ax=ax1, color='r', axlabel='Sales')
+    ax1.set_title('Actual Sales')
+    sns.distplot(predicted_ys, bins=bins, hist=True, kde=True, ax=ax2, color='b', axlabel='Sales')
+    ax2.set_title('Predicted Sales')
+
+    pic_path = 'graphs/{0}_hist.png'.format(model_name.replace(' ', '_').lower())
+    pic_dir = get_dir(pic_path)
+
+    plt.savefig(pic_dir, bbox_inches='tight')
+    plt.clf()
+
 def plot_predictions(X_test, Y_test, gregr, rfregr, knnregr):
     """Plot the Predicted sales of each model
 
@@ -102,6 +119,10 @@ def plot_predictions(X_test, Y_test, gregr, rfregr, knnregr):
     plot_helper(df['cscore'], df['gtotal'], df['rfres'], 'Random Forest')
     plot_helper(df['cscore'], df['gtotal'], df['knnres'], 'KNN')
     plot_helper(df['cscore'], df['gtotal'], df['gres'], 'Gamma Regression')
+
+    plot_helper2(df['gtotal'], df['rfres'], 'Random Forest')
+    plot_helper2(df['gtotal'], df['knnres'], 'KNN')
+    plot_helper2(df['gtotal'], df['gres'], 'Gamma Regression')
 
 def rmse(X_test, Y_test, model):
     Y_pred = model.predict(X_test)
@@ -134,7 +155,7 @@ if __name__ == "__main__":
     rfregr = random_forest(X_train, Y_train.ravel())
 
     ## KNN
-    knnregr = knn(X_train, Y_train.ravel(), 6)
+    knnregr = knn(X_train, Y_train.ravel(), 20)
 
     plot_predictions(X_test, Y_test, gregr, rfregr, knnregr)
 
