@@ -4,6 +4,9 @@ import pickle
 import sqlite3
 import re
 import os
+from sklearn.impute import SimpleImputer as Imputer
+from sklearn.impute import KNNImputer
+from sklearn.preprocessing import LabelEncoder
 
 __all__ = ['Videogames']
 
@@ -76,6 +79,7 @@ class Videogames(object):
                 f.write(", \n".join(headers))
         
         if not self._has_data:
+            data = self._remove_missing(data)
             with open(get_dir(self.data_dir + self.storage), "wb+") as f:
                 self._insert_data(data, headers, dtypes, cur)
                 self._has_data = True
@@ -84,7 +88,23 @@ class Videogames(object):
         del data
         conn.commit()
         conn.close()
-    
+
+    def _remove_missing(self, data):
+        data = data.replace(r'tbd', np.nan, regex=True)
+        data['User_Score'] = data['User_Score'].astype(np.float64)
+        condition = (data['Platform'].notnull() & data['Genre'].notnull() & data['Publisher'].notnull() & data['Year_of_Release'].notnull())
+        data = self._imputation(data[condition])
+        return data
+
+    def _imputation(self, data):
+        imp = Imputer(strategy='median')
+        attributes = ['Critic_Score', 'User_Score', 'Critic_Count', 'User_Count']
+        for item in attributes:
+            data[item] = imp.fit_transform(data[[item]]).ravel()
+        labelencoder = LabelEncoder()
+        np.random.seed(1)
+        return data
+
     def get_col(self, *header):
         if not self._connection:
             self._connection = sqlite3.connect(self.database_dir)
@@ -120,7 +140,6 @@ class Videogames(object):
     
     def _get_dtypes(self, data):
         if not self._dtypes:
-            print([(data[col][0], type(data[col][0])) for col in data.columns])
             self._dtypes = [self._process_dtype(data[col][0]) for col in data.columns]
         return self._dtypes
        
