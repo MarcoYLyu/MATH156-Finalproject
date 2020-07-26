@@ -29,7 +29,7 @@ def read_data():
     return res
 
 if __name__ == "__main__":
-    ## the critical scores and user scores
+    ## the critic scores and user scores
     columns = ['name', 'gtotal', 'cscore', 'uscore', 'genre', 'publisher']
     res = pd.DataFrame(read_data(), columns=columns)
 

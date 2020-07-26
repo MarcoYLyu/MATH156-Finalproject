@@ -101,8 +101,6 @@ class Videogames(object):
         attributes = ['Critic_Score', 'User_Score', 'Critic_Count', 'User_Count']
         for item in attributes:
             data[item] = imp.fit_transform(data[[item]]).ravel()
-        labelencoder = LabelEncoder()
-        np.random.seed(1)
         return data
 
     def get_col(self, *header):

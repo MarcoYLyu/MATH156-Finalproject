@@ -37,11 +37,11 @@ def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
 
     ax1.plot(xs, data_ys, 'k+', label='data')
     ax1.set_title('Actual Sales')
-    ax1.set(xlabel='Critical Score', ylabel='Global Sales (million)')
+    ax1.set(xlabel='Critic Score', ylabel='Global Sales (million)')
     
     ax2.plot(xs, predict_ys, 'y*', label='prediction')
     ax2.set_title('Predicted Sales')
-    ax2.set(xlabel='Critical Score', ylabel='Global Sales (million)')
+    ax2.set(xlabel='Critic Score', ylabel='Global Sales (million)')
 
     pic_path = 'graphs/{0}.png'.format(model_name.replace(' ', '_').lower())
 
@@ -85,7 +85,7 @@ def plot_predictions(X_test, Y_test, rfregr, knnregr):
                         columns=['cscore', 'gtotal'],
                         index=np.arange(0, len(cscores), 1))
 
-    ## Create a pandas DataFrame sorted by Critical Score
+    ## Create a pandas DataFrame sorted by Critic Score
     df = pd.concat([temp, rfres, knnres], axis=1)
     df = pd.DataFrame(df.sort_values(by='cscore', ascending=True).to_numpy(),
                 columns=['cscore', 'gtotal', 'rfres', 'knnres'])
