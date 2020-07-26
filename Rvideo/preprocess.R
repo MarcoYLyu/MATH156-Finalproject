@@ -1,0 +1,57 @@
+Vdata <- read.csv("../data/videogames.csv")
+Vdata <- Vdata[as.numeric(as.character(Vdata$Year_of_Release)) > 2009, ]
+Vdata <- Vdata[(!is.na(Vdata$Critic_Score)),]
+Anova_test <- function(classifier, data = Vdata) {
+  summary(aov(data$Global_Sales ~ data[[classifier]]))
+}
+
+testclass <- function(classifier, data=Vdata){
+  table <- tapply(Vdata$Global_Sales, Vdata[[classifier]], function(x){x})
+  table[[1]] <- NULL
+  par(mfrow = c(1, 2))
+  boxplot(table, las = 3, cex=0.2, pch=20)
+  boxplot(table, ylim=c(0,5), las = 3, cex=0.2,pch=20)
+  Anova_test(classifier)
+}
+
+testclass(4) #genre
+testclass(2) #platform
+testclass(5) #publisher
+
+# Critic - Sale
+plot((Vdata$Critic_Score),Vdata$Global_Sales, cex=0.1)
+x <- seq(0,100,len=1000)
+y <- 1/1500*x^2
+lines(x,y,lty=3,col="red")
+legend("topleft", "1/1500 * x^2", lty=2, col="red", inset=0.05)
+idx <- Vdata$Global_Sales <= (Vdata$Critic_Score)^2/1500
+plot((Vdata$Critic_Score)[idx],Vdata$Global_Sales[idx], cex=0.1)
+plot(factor((Vdata$Critic_Score)[idx]), ylim=c(0,5),Vdata$Global_Sales[idx], cex=0.1)
+f <- 1/20000000*x^4+1/1500000000*x^5+0.2
+t <- 1/50000000*x^4
+m <- 1/80000000*x^4+1/2000000000*x^5+0.1
+lines(x,f,lty=2,col="red")
+lines(x,t,lty=2,col="blue")
+lines(x,m,lty=2,col="green")
+
+legend("topleft", "1/1500 * x^2", lty=2, col="red", inset=0.05)
+plot(Vdata$Critic_Score, Vdata$Global_Sales, cex=0.1)
+z <- (exp(1/50*x)-1)
+lines(x,z,lty=3,col="blue")
+legend("topleft", "exp(1/50*x)-1", lty=2, col="blue", inset=0.05)
+
+# sqrt(Critic*Count) - Sale
+plot(as.numeric(as.character(Vdata$User_Score)), ylim=c(0, 5),Vdata$Global_Sales, cex=0.1)
+plot(sqrt(as.numeric(as.character(Vdata$User_Score))), ylim=c(0, 5),Vdata$Global_Sales, cex=0.1)
+plot(log(as.numeric(as.character(Vdata$User_Score))), ylim=c(0, 5),Vdata$Global_Sales, cex=0.1)
+
+# Uscore - Sale
+plot(as.numeric(as.character(Vdata$User_Score)), Vdata$Global_Sales, cex=0.1)
+x <- seq(0,100,len=1000)
+y <- 1/1500*x^2
+lines(x,y,lty=3,col="red")
+legend("topleft", "1/1500 * x^2", lty=2, col="red", inset=0.05)
+plot(as.numeric(as.character(Vdata$User_Score)), Vdata$Global_Sales, cex=0.1)
+z <- (exp(1/50*x)-1)
+lines(x,z,lty=3,col="blue")
+legend("topleft", "exp(1/50*x)-1", lty=2, col="blue", inset=0.05)
