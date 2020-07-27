@@ -14,7 +14,7 @@ Because the dataset given is missing data, we preprocess the data first and save
 
 ## Modeling
 
-In the Python code, we use **Random Forest** and **KNN** as our regression models. See [models.py](../models.py) for more information about the implementation.
+In the Python code, we use **Random Forest**, **KNN**, and **Artificial Neural Network** as our regression models. See [models.py](../models.py) for more information about the implementation.
 
 1. Random Forest: We set the criterion to be MSE to minimize the mean square error.
 
@@ -22,6 +22,8 @@ In the Python code, we use **Random Forest** and **KNN** as our regression model
    1. **Training**: the data we use to train the model.
    2. **Cross Validation**: the data we use to determine the number of neighbors we use in the model (Choose the **k** to minimize the root mean square error)
    3. **Test**: the data we use to test the model.
+
+3. Artificial Neural Network: We set the activation function to be ReLu and epoch **50**.
 
 ## Plotting
 

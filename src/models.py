@@ -52,12 +52,12 @@ def knn(xs, ys, n=10):
 def ann(xs, ys):
     n = len(xs.columns)
     ANN = Sequential()
-    ANN.add(Dense(units = 6, activation = "elu", input_dim = n))
-    ANN.add(Dense(units = 4, activation = "elu"))
+    ANN.add(Dense(units = 10, activation = "relu", input_dim = n))
+    ANN.add(Dense(units = 6, activation = "relu"))
     ANN.add(Dense(units = 1))
 
     ANN.compile(optimizer = "rmsprop", loss = "mean_squared_error")
-    ANN.fit(xs, ys, batch_size = 1, epochs = 100)
+    ANN.fit(xs, ys, batch_size = 1, epochs = 50)
     return ANN
 
 def linear_model(xs, ys, m):
