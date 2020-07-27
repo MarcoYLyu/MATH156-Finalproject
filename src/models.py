@@ -8,6 +8,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from keras.models import Sequential
+from keras.layers import Dense
 
 ## just in case someone wants to implement them instead of using sklearn
 
@@ -47,9 +49,16 @@ def knn(xs, ys, n=10):
 
     return best_model
 
-def gamma_model(xs, ys):
-    model = GammaRegressor().fit(xs, ys)
-    return model
+def ann(xs, ys):
+    n = len(xs.columns)
+    ANN = Sequential()
+    ANN.add(Dense(units = 6, activation = "elu", input_dim = n))
+    ANN.add(Dense(units = 4, activation = "elu"))
+    ANN.add(Dense(units = 1))
+
+    ANN.compile(optimizer = "rmsprop", loss = "mean_squared_error")
+    ANN.fit(xs, ys, batch_size = 1, epochs = 100)
+    return ANN
 
 def linear_model(xs, ys, m):
     model = make_pipeline(PolynomialFeatures(m), Ridge(normalize=True)).fit(xs, ys)
@@ -58,40 +67,3 @@ def linear_model(xs, ys, m):
 def random_forest(xs, ys):
     model = RandomForestRegressor(criterion='mse').fit(xs, ys)
     return model
-
-
-"""
-## Modified KNeighborsRegressor so that it uses median rather than mean
-from sklearn.neighbors.regression import check_array, _get_weights
-
-class MedianKNeighborsRegressor(KNeighborsRegressor):
-    def predict(self, X):
-        X = check_array(X, accept_sparse='csr')
-
-        neigh_dist, neigh_ind = self.kneighbors(X)
-
-        weights = _get_weights(neigh_dist, self.weights)
-
-        _y = self._y
-        if _y.ndim == 1:
-            _y = _y.reshape((-1, 1))
-
-        if weights is None:
-            y_pred = np.median(_y[neigh_ind], axis=1)
-        else:
-            y_pred = np.empty((X.shape[0], _y.shape[1]), dtype=np.float64)
-            denom = np.sum(weights, axis=1)
-
-            for j in range(_y.shape[1]):
-                num = np.sum(_y[neigh_ind, j] * weights, axis=1)
-                y_pred[:, j] = num / denom
-
-        if self._y.ndim == 1:
-            y_pred = y_pred.ravel()
-
-        return y_pred
-
-def medianknn(xs, ys, n):
-    model = MedianKNeighborsRegressor(n_neighbors=n).fit(xs, ys)
-    return model
-"""

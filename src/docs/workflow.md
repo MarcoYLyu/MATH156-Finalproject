@@ -31,7 +31,7 @@ The code generates two kinds of plots for each model when they are applied to th
 
     ![](../../graphs/random_forest.png)
 
-2. **Kernel Density Distribution**: It plots a kernel density estimate for both the actual sales and the predicted sales. below is such a plot for Random Forest. The Gaussian kernel is chosen by default for the kernel density estimate. For more information about the plot, see [here](https://seaborn.pydata.org/generated/seaborn.kdeplot.html#seaborn.kdeplot).
+2. **Kernel Density Distribution**: It plots the kernel density estimates for both the actual sales and the predicted sales. Below is such a plot for Random Forest. The Gaussian kernel is chosen by default for the kernel density estimate. For more information about the plot, see [here](https://seaborn.pydata.org/generated/seaborn.kdeplot.html#seaborn.kdeplot).
 
     ![](../../graphs/random_forest_hist.png)
 

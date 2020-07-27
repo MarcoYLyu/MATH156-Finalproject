@@ -15,10 +15,9 @@ def predict(X_test, Y_test, model):
         model (object): Model we are using
 
     Returns:
-        Series: predicted scales
+        DataFrame: predicted scales
     """
-    temp = model.predict(X_test)
-    return pd.Series(model.predict(X_test))
+    return pd.DataFrame(model.predict(X_test))
 
 def plot_helper(xs, data_ys, predict_ys, model_name='Unknown'):
     """Plot the predicted sales
@@ -66,7 +65,7 @@ def plot_helper2(data_ys, predicted_ys, model_name='Unknown'):
     plt.savefig(pic_dir, bbox_inches='tight')
     plt.clf()
 
-def plot_predictions(X_test, Y_test, rfregr, knnregr):
+def plot_predictions(X_test, Y_test, rfregr, knnregr, annregr):
     """Plot the Predicted sales of each model
 
     Args:
@@ -74,11 +73,13 @@ def plot_predictions(X_test, Y_test, rfregr, knnregr):
         Y_test (Series): actual sales
         rfregr (RandomForestRegressor): Random Forest Regressor
         knnregr (KNNRegressor): KNN Regressor
+        annregr (ANNRegressor): Artificial Neural Network Regressor
     """
     cscores = X_test['cscore']
     ## Get predicted sales
     rfres = predict(X_test, Y_test, rfregr)
     knnres = predict(X_test, Y_test, knnregr)
+    annres = predict(X_test, Y_test, annregr)
 
     ## Correct the indices in case
     temp = pd.DataFrame(pd.concat([cscores, Y_test], axis=1).to_numpy(),
@@ -86,12 +87,14 @@ def plot_predictions(X_test, Y_test, rfregr, knnregr):
                         index=np.arange(0, len(cscores), 1))
 
     ## Create a pandas DataFrame sorted by Critic Score
-    df = pd.concat([temp, rfres, knnres], axis=1)
+    df = pd.concat([temp, rfres, knnres, annres], axis=1)
     df = pd.DataFrame(df.sort_values(by='cscore', ascending=True).to_numpy(),
-                columns=['cscore', 'gtotal', 'rfres', 'knnres'])
+                columns=['cscore', 'gtotal', 'rfres', 'knnres', 'annres'])
 
     plot_helper(df['cscore'], df['gtotal'], df['rfres'], 'Random Forest')
     plot_helper(df['cscore'], df['gtotal'], df['knnres'], 'KNN')
+    plot_helper(df['cscore'], df['gtotal'], df['annres'], 'ANN')
 
     plot_helper2(df['gtotal'], df['rfres'], 'Random Forest')
     plot_helper2(df['gtotal'], df['knnres'], 'KNN')
+    plot_helper2(df['gtotal'], df['annres'], 'ANN')
