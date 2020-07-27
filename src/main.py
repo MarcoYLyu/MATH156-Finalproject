@@ -25,7 +25,7 @@ def read_data():
             FROM VIDEOGAMES 
             WHERE year_of_release >= 2004 and uscore != 0 and cscore != 0
             GROUP BY name) AS VideogameSummary
-        WHERE g_total != 0 and g_total <= 35
+        WHERE g_total != 0
         ORDER BY g_total DESC;
         '''))
     return res
