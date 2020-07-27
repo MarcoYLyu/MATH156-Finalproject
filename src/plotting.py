@@ -55,9 +55,11 @@ def plot_helper2(data_ys, predicted_ys, model_name='Unknown'):
 
     bins = np.arange(0, 6, 0.1)
     sns.distplot(data_ys, bins=bins, hist=True, kde=True, ax=ax1, color='r', axlabel='Sales')
-    ax1.set_title('Actual Sales')
+    ax1.set_title('Actual Sales -- Density Plot')
+    ax1.set_xlim(0, 2)
     sns.distplot(predicted_ys, bins=bins, hist=True, kde=True, ax=ax2, color='b', axlabel='Sales')
-    ax2.set_title('Predicted Sales')
+    ax2.set_title('Predicted Sales -- Density Plot')
+    ax2.set_xlim(0, 2)
 
     pic_path = 'graphs/{0}_hist.png'.format(model_name.replace(' ', '_').lower())
     pic_dir = get_dir(pic_path)

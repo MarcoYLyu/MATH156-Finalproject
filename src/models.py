@@ -37,7 +37,7 @@ def knn(xs, ys, n=10):
     ns = [n]
     rmses = [best_rmse]
     ### You can change 5 to * 2 or * 3 here for a better result, but slower.
-    for n in range(i, int(np.sqrt(num_cols)) + 5):
+    for n in range(i, int(np.sqrt(num_cols)) * 3):
         model = KNeighborsRegressor(n_neighbors=n, algorithm='kd_tree').fit(X_train, Y_train)
         temp = rmse(X_test, Y_test, model)
         ns.append(n)
