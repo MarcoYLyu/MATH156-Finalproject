@@ -20,15 +20,15 @@ def create():
 	X = df.iloc[ : , 1:4]
 	X['bias'] = np.repeat(1, 7516)
 	Y = df['ds']
-	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .20, random_state = 40)
+	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .50, random_state = 40)
 
 	ANN = Sequential()
 	ANN.add(Dense(units = 6, activation = "elu", input_dim = 4))
 	ANN.add(Dense(units = 4, activation = "elu"))
 	ANN.add(Dense(units = 1))
 
-	ANN.compile(optimizer = "rmsprop", loss = "mean_squared_error")
-	ANN.fit(X_train, Y_train, batch_size = 1, epochs = 100)
+	ANN.compile(optimizer = "adam", loss = "mean_squared_error")
+	ANN.fit(X_train, Y_train, batch_size = 2, epochs = 200)
 	Y_pred = ANN.predict(X_test)
 
 	MSE = mean_squared_error(Y_test, Y_pred)
@@ -36,7 +36,8 @@ def create():
 
 	if MSE < mse_so_far:
 		ANN.save('./ann')
-		print("MSE is less than previous model: ", mse_so_far, "Updata Mode")
+		print("\n\n\n------------\
+			MSE is less than previous model: ", mse_so_far, "Updata Mode\n\n\n")
 		with open('./mse.txt', 'w') as f:
 			f.write(str(MSE))
 	ANN.save('./ann2')

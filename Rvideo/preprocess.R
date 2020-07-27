@@ -1,6 +1,10 @@
 Vdata <- read.csv("../data/videogames.csv")
-Vdata <- Vdata[as.numeric(as.character(Vdata$Year_of_Release)) > 2009, ]
+#Vdata <- Vdata[as.numeric(as.character(Vdata$Year_of_Release)) > 2009, ]
 Vdata <- Vdata[(!is.na(Vdata$Critic_Score)),]
+rangef <- function(x, divider=5) {
+  x %/% divider * divider + divider/2
+}
+
 Anova_test <- function(classifier, data = Vdata) {
   summary(aov(data$Global_Sales ~ data[[classifier]]))
 }
@@ -12,6 +16,28 @@ testclass <- function(classifier, data=Vdata){
   boxplot(table, las = 3, cex=0.2, pch=20)
   boxplot(table, ylim=c(0,5), las = 3, cex=0.2,pch=20)
   Anova_test(classifier)
+}
+
+get_freq <- function(x, breaks) {
+  len <- length(breaks)
+  res <- numeric(len)
+  for (i in seq_len(len)) {
+    res[i] <- sum(breaks[i] < x & x <= breaks[i+1])
+  }
+  res
+}
+
+get_density <- function(x, breaks, by) {
+  res <- get_freq(x, breaks) / (length(x) * by)
+  res
+}
+
+get_density_idx <- function(gs) {
+  ceiling(20 * gs)
+}
+
+rangef <- function(x, divider=5) {
+  x %/% divider * divider + divider/2
 }
 
 testclass(4) #genre
@@ -34,16 +60,21 @@ lines(x,f,lty=2,col="red")
 lines(x,t,lty=2,col="blue")
 lines(x,m,lty=2,col="green")
 
-legend("topleft", "1/1500 * x^2", lty=2, col="red", inset=0.05)
-plot(Vdata$Critic_Score, Vdata$Global_Sales, cex=0.1)
-z <- (exp(1/50*x)-1)
-lines(x,z,lty=3,col="blue")
-legend("topleft", "exp(1/50*x)-1", lty=2, col="blue", inset=0.05)
+cor.test(as.numeric(as.character(Vdata$User_Score)), Vdata$Critic_Score)
 
-# sqrt(Critic*Count) - Sale
-plot(as.numeric(as.character(Vdata$User_Score)), ylim=c(0, 5),Vdata$Global_Sales, cex=0.1)
-plot(sqrt(as.numeric(as.character(Vdata$User_Score))), ylim=c(0, 5),Vdata$Global_Sales, cex=0.1)
-plot(log(as.numeric(as.character(Vdata$User_Score))), ylim=c(0, 5),Vdata$Global_Sales, cex=0.1)
+
+# 5 range
+Vdata <- Vdata[idx, ]
+Vdata <- Vdata[Vdata$Global_Sales <= 4, ]
+ran <- rangef((Vdata$Critic_Score)[idx])
+plot(factor(ran), ylim=c(0,5),Vdata$Global_Sales[idx], cex=0.1)
+hist(Vdata$Global_Sales[ran==82.5], breaks=100, col="red", add=TRUE)
+hist(Vdata$Global_Sales[ran==77.5], breaks=100, col = 'blue')
+hist(Vdata$Global_Sales[ran==72.5], breaks=100, add=TRUE,col = 'green')
+
+legend("topleft", "1/1500 * x^2", lty=2, col="red", inset=0.05)
+
+
 
 # Uscore - Sale
 plot(as.numeric(as.character(Vdata$User_Score)), Vdata$Global_Sales, cex=0.1)
@@ -55,3 +86,4 @@ plot(as.numeric(as.character(Vdata$User_Score)), Vdata$Global_Sales, cex=0.1)
 z <- (exp(1/50*x)-1)
 lines(x,z,lty=3,col="blue")
 legend("topleft", "exp(1/50*x)-1", lty=2, col="blue", inset=0.05)
+
