@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Predicting Video Games Sales
+%
+% Author:       Yi Lyu
+% Organization: UCLA
+% Purpose:      Final Project Presentation
+% Status:       Draft
+% Last Updated: TODO
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{libertine}
+\usepackage{inconsolata}
+\usepackage{subfiles}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{float}
+\usepackage[noend]{algpseudocode}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+\usepackage{cancel}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\newcommand\R{\mathbb{R}}
+\newcommand\N{\mathbb{N}}
+\newcommand\C{\mathbb{C}}
+\newcommand{\urlNewWindow}[1]{\href[pdfnewwindow=true]{#1}{\nolinkurl{#1}}}
+
+\usetheme{Madrid}
+
+\title{MATH 156 Final Project}
+\subtitle{Predicting videogame sales with various models}
+\author{Group 5}
+\institute{University of California, Los Angeles}
+\date{\today}
+
+% style of lists
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{enumerate items}[square]
+\setbeamertemplate{itemize items}[default]
+
+% style of paragraphs
+\setlength{\parskip}{0.5em}
+
+% style of code blocks
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{background}{rgb}{0.94,0.95,0.96}
+
+\lstset{
+  frame=none,
+  backgroundcolor=\color{background},
+  language=bash,
+  showstringspaces=false,
+  keepspaces=true,
+  columns=flexible,
+  basicstyle={\tiny\ttfamily},
+  numbers=none,
+  numberstyle=\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  tabsize=2
+}
+
+% hltexttt will highlight monospaced string
+\newcommand*{\grayemph}[1]{%
+  \tikz[baseline=(X.base)] \node[rectangle, fill=lightgray!40, rounded corners, inner sep=0.3mm] (X) {#1};%
+}
+\newcommand{\hltexttt}[1]{\texttt{\small\grayemph{#1}}}
+
+% show table of contents before every section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents
+\end{frame}
+
+\section{K Nearest Neighbors Regression}
+\subfile{sections/knn.tex}
+
+\section{Random Forest Regression}
+\subfile{sections/random_forest.tex}
+
+\section{Artificial Neural Network}
+\subfile{sections/ann.tex}
+
+\end{document}
