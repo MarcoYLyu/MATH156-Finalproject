@@ -130,7 +130,7 @@ for (i in seq(11)) {
 - We want to get the distribution density function of Global Sale given Critic Score: $$f(sale, critic)$$
 - But later in real practice, I realize a better model is$$f(\text{sale}, \text{critic}, \text{critic count})$$
 - We choose MSE as objective function: $$\frac{1}{N}\sum(f-\hat f)^2$$
-- Train the model with 50% of the data, test with 50% of the data
+- Train the model with 30% of the data, test with 70% of the data
   - Selected with [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
   - To make sure test data can represent real distribution
 
@@ -195,7 +195,32 @@ for (i in list("Adamax", "Nadam", "Adam")) {
 - Activation Function: Scaled Exponential Linear Unit(SELU) $$\text{elu}(k) = \lambda\begin{cases}k  & k>0\\\alpha(e^k-1) & z \leq 0\end{cases}$$
 - Optimizer: Nadam
 - Run 8 models in paralle and choose the one with lowerest MSE
-- Result: MSE = $\frac{1}{n}\sum(Y_{test} - Y_{pred})^2$ = 0.047254037111997604
+- Result: MSE = $\frac{1}{n}\sum(Y_{test} - Y_{pred})^2$ = 0.04845363274216652
+```{python python.reticulate = FALSE, eval=FALSE}
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .70, random_state = 40)
+	print("Evaluate on test data")
+	results = ANN.evaluate(X_test, Y_test, batch_size=128)
+	print("test loss, test acc:", results)
+	print(ANN.summary())
+```
+```
+Evaluate on test data
+42/42 [==============================] - 0s 593us/step - loss: 0.0485
+test loss, test acc: 0.04845363274216652
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+dense (Dense)                (None, 6)                 30        
+_________________________________________________________________
+dense_1 (Dense)              (None, 4)                 28        
+_________________________________________________________________
+dense_2 (Dense)              (None, 1)                 5         
+=================================================================
+Total params: 63
+Trainable params: 63
+Non-trainable params: 0
+```
 
 # Apply the model to all data point (100%) and plot on each histgram
 - This model fits the general density function
@@ -225,7 +250,7 @@ for (i in seq(11)) {
 - Four input Node: Critic Score, $log(\text{Critic Count})$, Global Sale, Bias
 - Activation Function: Exponential Linear Unit(ELU) $$\text{elu}(k) = \begin{cases}k  & k>0\\\alpha(e^k-1) & z \leq 0\end{cases}$$
 - Optimizer: Adam
-- Train the model with 50% of the data, test with 50% of the data
+- Train the model with 30% of the data, test with 70% of the data
   - Selected with [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
 - Result: MSE = 0.039713695603222736
 

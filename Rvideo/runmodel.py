@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
@@ -17,7 +19,7 @@ def run():
 	out = pd.concat([X, Y_pred], axis=1)
 	out.to_csv("./predictedData.csv")
 
-	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .50, random_state = 40)
+	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .70, random_state = 40)
 	print("Evaluate on test data")
 	results = ANN.evaluate(X_test, Y_test, batch_size=128)
 	print("test loss, test acc:", results)

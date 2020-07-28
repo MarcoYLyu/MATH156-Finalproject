@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
@@ -23,7 +25,7 @@ def create(opt="Nadam", act="selu", fl=6, sl=4):
 	X = df.iloc[ : , 1:4]
 	X['bias'] = np.repeat(1, 7516)
 	Y = df['ds']
-	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .50, random_state = 40)
+	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .30, random_state = 40)
 
 	ANN = Sequential()
 	ANN.add(Dense(units = fl, activation = act, input_dim = 4))
@@ -63,7 +65,7 @@ def createN(opt, act, fl, sl, val, lock):
 	X = df.iloc[ : , 1:4]
 	X['bias'] = np.repeat(1, 7516)
 	Y = df['ds']
-	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .50, random_state = 40)
+	X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .30, random_state = 40)
 
 	ANN = Sequential()
 	ANN.add(Dense(units = fl, activation = act, input_dim = 4))
@@ -104,7 +106,7 @@ if __name__ == '__main__':
 	start = time.time()
 	#results = [pool.apply_async(create, args=("Nadam", "selu", 6, 4, mse, lock)) for i in range(5)]
 	#results = [p.get() for p in results]
-	procs = [Process(target=createN, args=("Nadam", "selu", 6, 4, mse, lock)) for i in range(8)]
+	procs = [Process(target=createN, args=("adam", "selu", 6, 4, mse, lock)) for i in range(8)]
 	for p in procs: p.start()
 	for p in procs: p.join()
 	span = time.time() - start
