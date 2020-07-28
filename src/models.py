@@ -6,7 +6,7 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error
 from keras.models import Sequential
 from keras.layers import Dense
@@ -30,15 +30,32 @@ def knn(xs, ys, n=10):
     num_cols = len(X_train.columns)
     i = 5
 
-    best_model = KNeighborsRegressor(n_neighbors=i, algorithm='kd_tree').fit(X_train, Y_train)
+    best_index = 4
+    best_score = 10000
+    nums = [i for i in range(5, int(np.sqrt(num_cols)) + 5)]
+    cvs = []
+
+    for num in nums:
+        model = KNeighborsRegressor(n_neighbors=num, algorithm='kd_tree', weights='distance')
+        temp = cross_val_score(model, xs, ys, cv=5).mean()
+        temp = np.sqrt(1 - temp)
+        if temp < best_score:
+            best_score = temp
+            best_index = num
+    print(best_index)
+    return KNeighborsRegressor(n_neighbors=best_index, algorithm='kd_tree', weights='distance').fit(xs, ys)
+    """
+
+    best_model = KNeighborsRegressor(n_neighbors=i, algorithm='kd_tree', weights='distance').fit(X_train, Y_train)
     best_rmse = rmse(X_test, Y_test, best_model)
 
     ### Cross Validation
     ns = [n]
     rmses = [best_rmse]
+    cvs = []
     ### You can change 5 to * 2 or * 3 here for a better result, but slower.
-    for n in range(i, int(np.sqrt(num_cols)) * 3):
-        model = KNeighborsRegressor(n_neighbors=n, algorithm='kd_tree').fit(X_train, Y_train)
+    for n in range(i, int(np.sqrt(num_cols)) + 5):
+        model = KNeighborsRegressor(n_neighbors=n, algorithm='kd_tree', weights='distance').fit(X_train, Y_train)
         temp = rmse(X_test, Y_test, model)
         ns.append(n)
         rmses.append(temp)
@@ -47,18 +64,24 @@ def knn(xs, ys, n=10):
             best_rmse = temp
     plot_knn(ns, rmses)
 
+    """
+
     return best_model
 
 def ann(xs, ys):
     n = len(xs.columns)
     ANN = Sequential()
-    ANN.add(Dense(units = 10, activation = "relu", input_dim = n))
-    ANN.add(Dense(units = 6, activation = "relu"))
+    ANN.add(Dense(units = 6, activation = "elu", input_dim = n))
+    ANN.add(Dense(units = 4, activation = "elu"))
     ANN.add(Dense(units = 1))
 
-    ANN.compile(optimizer = "rmsprop", loss = "mean_squared_error")
-    ANN.fit(xs, ys, batch_size = 1, epochs = 50)
+    ANN.compile(optimizer = "adam", loss = "mean_squared_error")
+    ANN.fit(xs, ys, batch_size = 2, epochs = 100)
     return ANN
+
+def gamma_model(xs, ys):
+    model = GammaRegressor().fit(xs, ys)
+    return model
 
 def linear_model(xs, ys, m):
     model = make_pipeline(PolynomialFeatures(m), Ridge(normalize=True)).fit(xs, ys)

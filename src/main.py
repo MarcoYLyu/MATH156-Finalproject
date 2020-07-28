@@ -54,23 +54,23 @@ if __name__ == "__main__":
     try:
         with open(get_dir('data/models.pickle'), 'rb') as f:
             rfregr, knnregr = pickle.load(f)
-            annregr = load_model(get_dir('data/ann'))
+            #annregr = load_model(get_dir('data/ann'))
     except:
-        annregr = ann(X_train, Y_train.ravel())            ## ANN
+        #annregr = ann(X_train, Y_train.ravel())            ## ANN
         rfregr = random_forest(X_train, Y_train.ravel())   ## Random Forest
         knnregr = knn(X_train, Y_train.ravel())            ## KNN
         with open(get_dir('data/models.pickle'), 'wb+') as f:
             pickle.dump((rfregr, knnregr), f, pickle.HIGHEST_PROTOCOL)
-            annregr.save(get_dir('data/ann'))
+            #annregr.save(get_dir('data/ann'))
 
     print("The mean is", np.mean(Y))
     ## RMSE
     rmse_template='RMSE\t{name:25}{value:18}'
     print(rmse_template.format(name='random forest', value=rmse(X_test, Y_test, rfregr)))
     print(rmse_template.format(name='Knn', value=rmse(X_test, Y_test, knnregr)))
-    print(rmse_template.format(name='ANN', value=rmse(X_test, Y_test, annregr)))
+    #print(rmse_template.format(name='ANN', value=rmse(X_test, Y_test, annregr)))
 
-    plot_predictions(X_test, Y_test, rfregr, knnregr, annregr)
+    #plot_predictions(X_test, Y_test, rfregr, knnregr, annregr)
 
     """
 
