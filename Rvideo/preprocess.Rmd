@@ -1,7 +1,7 @@
 ---
 title: "Math156 Final Project Neural Network Report"
 author: "Group 5"
-date: "7/22/2020"
+date: "7/28/2020"
 output:
   slidy_presentation: default
   beamer_presentation: default
@@ -70,6 +70,11 @@ testclass(4)
 testclass(5)
 ```
 
+### Test multicolineality
+```{r echo=FALSE}
+cor.test(as.numeric(as.character(Vdata$User_Score)), Vdata$Critic_Score)
+cor.test(as.numeric(as.character(Vdata$User_Count)), Vdata$Critic_Count)
+```
 
 # Plot Global Sale ~ Paramemter
 
@@ -79,13 +84,8 @@ plot(Vdata$Critic_Score, Vdata$Global_Sales, cex=0.1, ylim=c(0,20), xlab="Critic
 x <- seq(0,100,len=1000)
 y <- 1/1500*x^2
 lines(x,y,lty=3,col="red")
-legend("topleft", "1/1500 * x^2", lty=2, col="red", inset=0.05)
 ```
 
-### Test multicolineality
-```{r}
-cor.test(as.numeric(as.character(Vdata$User_Score)), Vdata$Critic_Score)
-```
 
 # Focus on Critic score
 
@@ -128,7 +128,11 @@ for (i in seq(11)) {
 
 - The goal is to approximate the blue density curve given the value of Critic Score
 - We want to get the distribution density function of Global Sale given Critic Score: $$f(sale, critic)$$
-- We choose MSE as objective function: $$\sum(f-\hat f)^2$$
+- But later in real practice, I realize a better model is$$f(\text{sale}, \text{critic}, \text{critic count})$$
+- We choose MSE as objective function: $$\frac{1}{N}\sum(f-\hat f)^2$$
+- Train the model with 50% of the data, test with 50% of the data
+  - Selected with [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+  - To make sure test data can represent real distribution
 
 # Clear up the dataframe and save it to csv file
 ```{r}
@@ -147,18 +151,59 @@ for (i in seq(11)) {
 # write.csv(dataf, "CS_GL_FQ.csv")
 ```
 
+# Brute force for Network seletion
+```
+opts = ["sgd", "rmsprop", "Adam", "Adamax", "Nadam"]
+acts = ["elu", "softmax", "selu", "relu", "sigmoid"]
+```
+- each run 5 times with 20 epoch
+- Then run these top selection
+
+![](nnselection.png){height=300, width=300}
+
+```{r echo=FALSE}
+Ndata <- read.csv("nnselection.csv", stringsAsFactors=FALSE)
+Ndata <- cbind(Ndata, 0)
+p <- character(0)
+totype <- function(act) {
+  seq(5)[c("elu", "softmax", "selu", "relu", "sigmoid")==act]
+}
+for (i in seq_along(Ndata$Activation)) {
+  Ndata[i, 6] <- totype(Ndata$Activation[i])
+}
+ndata <- Ndata[Ndata$Optimizer=="rmsprop",]
+plot(ndata[[6]], ndata$MSE, col=2, pch=19, ylab="MSE on test data", xlab="Activation", axes=FALSE, cex=0.5)
+k<-3
+axis(side=1,labels=c("elu", "softmax", "selu", "relu", "sigmoid"), at=seq(5))
+for (i in list("Adamax", "Nadam", "Adam")) {
+  ndata <- Ndata[Ndata$Optimizer==i,]
+  points(ndata[[6]], ndata$MSE, col=k, pch=19, cex=0.5)
+  k<-k+1
+}
+```
+
+
+- Then selection structure of network, how many Nodes in each Layer
+  - The score is given by MSE on test data, it avoids over-fitting
+  - Reduce the number of Node when test score doesn't change
+
 # Neural Network Setting ANN2 (The latest one)
 
 ![](nn.png){width=350, height=300}
 
 - Four input Node: Critic Score, $log(\text{Critic Count})$, Global Sale, Bias
-- Activation Function: Exponential Linear Unit(ELU) $$\text{elu}(k) = \begin{cases}k  & k>0\\\alpha(e^k-1) & z \leq 0\end{cases}$$
-- Optimizer: Adam
-- Train the model with 50% of the data, test with 50% of the data
-  - Selected with [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
-- Result: MSE = 0.060838572680950165
+- Activation Function: Scaled Exponential Linear Unit(SELU) $$\text{elu}(k) = \lambda\begin{cases}k  & k>0\\\alpha(e^k-1) & z \leq 0\end{cases}$$
+- Optimizer: Nadam
+- Run 8 models in paralle and choose the one with lowerest MSE
+- Result: MSE = $\frac{1}{n}\sum(Y_{test} - Y_{pred})^2$ = 0.047254037111997604
 
-# Apply the model to all data point and plot on each histgram
+# Apply the model to all data point (100%) and plot on each histgram
+- This model fits the general density function
+- The MSE generate with test data that are not used in train is close to loss in training
+  - The model fits the distrubution in two independent part of the data
+- However, when Global sale get high, some predicted value drops below 0
+  - The model only works well within certain range when global sale is low
+  - It's somehow reasonable since such high sale game is very random in the industry 
 ```{r}
 Pdata <- read.csv('predictedData.csv')
 for (i in seq(11)) {
@@ -184,6 +229,15 @@ for (i in seq(11)) {
   - Selected with [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
 - Result: MSE = 0.039713695603222736
 
+# Apply the model to all data point (100%) and plot on each histgram
+- Similarly, this model fits the general density function
+- This is the model with lowest test MSE
+  - The model fits the distrubution in two independent part of the data
+- However, in last two plot, the model seems like have some over fitting
+  - Based on MSE, over fitting should happen
+- In this model, when sale get large, the distribution become uniform
+  - When critic score gets higher the density of unform distribution tail rise
+  - This probably coresponding to these high score and high sale game in reality, and they have different distribution than most of the game.
 ```{r}
 Pdata <- read.csv('predictedData2.csv')
 for (i in seq(11)) {
@@ -197,3 +251,13 @@ for (i in seq(11)) {
   legend("topright", c("Density Curve", "Predicted By Neural Network"), lwd = c(0.5, NA), col = c("blue", 'red'), pch=c(NA, 19))
 }
 ```
+
+# Acknowledgments
+
+- https://github.com/MarcoYLyu/video-game-sales-predictor/tree/model1
+
+## Third party
+- Tensorflow
+- sklearn
+- Pandas
+- [Video game with rating](https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings)

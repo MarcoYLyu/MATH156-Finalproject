@@ -1,0 +1,65 @@
+
+
+
+ New Session Start at Tue Jul 28 02:33:51 2020
+ ValueError: sgd elu
+ ValueError: sgd elu
+ ValueError: sgd elu
+ ValueError: sgd selu
+
+
+ New Session Start at Tue Jul 28 03:00:29 2020ValueError: sgd eluValueError: sgd selu
+
+
+ New Session Start at Tue Jul 28 03:01:53 2020ValueError: sgd eluValueError: sgd seluValueError: sgd selu
+
+
+ New Session Start at Tue Jul 28 03:06:23 2020
+
+
+ New Session Start at Tue Jul 28 03:08:15 2020
+
+
+ New Session Start at Tue Jul 28 03:08:56 2020
+
+
+ New Session Start at Tue Jul 28 03:10:29 2020
+
+
+ New Session Start at Tue Jul 28 03:10:53 2020
+
+
+ New Session Start at Tue Jul 28 03:11:35 2020
+
+
+ New Session Start at Tue Jul 28 03:11:45 2020
+
+
+ New Session Start at Tue Jul 28 03:12:27 2020
+
+
+ New Session Start at Tue Jul 28 03:13:24 2020
+
+
+ New Session Start at Tue Jul 28 03:14:37 2020
+
+
+ New Session Start at Tue Jul 28 03:15:20 2020
+
+
+ New Session Start at Tue Jul 28 03:18:07 2020
+
+
+ New Session Start at Tue Jul 28 03:18:35 2020
+
+
+ New Session Start at Tue Jul 28 03:20:07 2020ValueError: sgd eluValueError: sgd seluValueError: sgd selu
+
+
+ New Session Start at Tue Jul 28 03:34:24 2020ValueError: sgd eluValueError: sgd selu
+
+
+ New Session Start at Tue Jul 28 06:35:33 2020
+
+
+ New Session Start at Tue Jul 28 06:35:54 2020ValueError: sgd eluValueError: sgd seluValueError: sgd selu
