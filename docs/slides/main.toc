@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Preprocessing Data}{3}{0}{1}
+\beamer@sectionintoc {2}{K Nearest Neighbors Regression}{12}{0}{2}
+\beamer@sectionintoc {3}{Random Forest Regression}{20}{0}{3}
+\beamer@sectionintoc {4}{Artificial Neural Network}{24}{0}{4}

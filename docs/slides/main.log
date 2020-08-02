@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 JUL 2020 22:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 AUG 2020 11:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/marcolyu/Desktop/Presentation/main.tex
-(/Users/marcolyu/Desktop/Presentation/main.tex
+**"/Users/marcolyu/Desktop/MATH 156 Final Project./main.tex"
+(/Users/marcolyu/Desktop/MATH 156 Final Project./main.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2018/12/02 v3.55 A class for typesetting presentations
@@ -904,11 +904,7 @@ LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 File: lstlang1.sty 2019/02/27 1.8b listings language file
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/02/27 1.8b listings language file
-) (/Users/marcolyu/Desktop/Presentation/main.aux
-
-LaTeX Warning: Label `fig:N20' multiply defined.
-
-)
+) (/Users/marcolyu/Desktop/MATH 156 Final Project./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
@@ -1009,7 +1005,6 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 111.
 LaTeX Info: Redefining \pageref on input line 111.
 LaTeX Info: Redefining \nameref on input line 111.
- (/Users/marcolyu/Desktop/Presentation/main.out) (/Users/marcolyu/Desktop/Presentation/main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
@@ -1077,7 +1072,8 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbat
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 111.
- (/Users/marcolyu/Desktop/Presentation/main.nav)
+
+No file main.nav.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 111.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
@@ -1086,59 +1082,171 @@ LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 115.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 4.0pt on input line 115.
- [1
+[1
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users/marcolyu/Desktop/Presentation/main.toc) [2
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+No file main.toc.
+[2
 
-] (/Users/marcolyu/Desktop/Presentation/main.toc) [3
+]
+No file main.toc.
+[3
 
-] (/Users/marcolyu/Desktop/Presentation/sections/knn.tex
-\openout4 = `main.vrb'.
-
- (/Users/marcolyu/Desktop/Presentation/main.vrb
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 5.
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+] (/Users/marcolyu/Desktop/MATH 156 Final Project./sections/preprocess.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 15.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+LaTeX Font Info:    Try loading font information for U+msb on input line 15.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 5.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 15.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 5.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 15.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 5.
+(Font)              scaled to size 10.95pt on input line 15.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 5.
+(Font)              scaled to size 8.0pt on input line 15.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 6.0pt on input line 5.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+(Font)              scaled to size 6.0pt on input line 15.
+<graphs/headdata.png, id=101, 547.04375pt x 96.36pt>
+File: graphs/headdata.png Graphic file (type png)
+<use graphs/headdata.png>
+Package pdftex.def Info: graphs/headdata.png  used on input line 15.
+(pdftex.def)             Requested size: 328.22878pt x 57.81642pt.
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 15.
+ [4
+
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/headdata.png>] [5
+
+]
+<graphs/rating.png, id=159, 487.8225pt x 313.17pt>
+File: graphs/rating.png Graphic file (type png)
+<use graphs/rating.png>
+Package pdftex.def Info: graphs/rating.png  used on input line 41.
+(pdftex.def)             Requested size: 243.91064pt x 156.58461pt.
+ [6
+
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/rating.png>]
+<graphs/correlationmat.png, id=187, 718.685pt x 193.72375pt>
+File: graphs/correlationmat.png Graphic file (type png)
+<use graphs/correlationmat.png>
+Package pdftex.def Info: graphs/correlationmat.png  used on input line 57.
+(pdftex.def)             Requested size: 359.34161pt x 96.86163pt.
+
+Overfull \hbox (17.04631pt too wide) in paragraph at lines 57--57
+ [] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:N20}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.57 \end{frame}
+                 [7
+
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/correlationmat.png>]
+<graphs/plotcorr.png, id=216, 737.75626pt x 715.67375pt>
+File: graphs/plotcorr.png Graphic file (type png)
+<use graphs/plotcorr.png>
+Package pdftex.def Info: graphs/plotcorr.png  used on input line 72.
+(pdftex.def)             Requested size: 184.43861pt x 178.918pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:N20}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.72 \end{frame}
+                
+Overfull \vbox (11.20734pt too high) detected at line 72
+ []
+
+[8
+
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/plotcorr.png>]
+\openout4 = `main.vrb'.
+
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/02/27 1.8b listings language file
 )
-LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 10.
+LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 6.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
 File: ot1zi4.fd 2018/01/14 OT1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
-(Font)              scaled to size 6.0pt on input line 10.
-) [4
-
-] (/Users/marcolyu/Desktop/Presentation/main.vrb) [5
+(Font)              scaled to size 6.0pt on input line 6.
+) [9
 
 ]
 \openout4 = `main.vrb'.
 
- (/Users/marcolyu/Desktop/Presentation/main.vrb
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 7.
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb:4: Undefined control sequence.
+l.4     \n
+          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+<graphs/improvement.png, id=272, 822.07124pt x 526.96875pt>
+File: graphs/improvement.png Graphic file (type png)
+<use graphs/improvement.png>
+Package pdftex.def Info: graphs/improvement.png  used on input line 7.
+(pdftex.def)             Requested size: 205.5173pt x 131.74185pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:N20}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9         \label{fig:N20}
+                           ) [10
+
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/improvement.png>]
+\openout4 = `main.vrb'.
+
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb:5: Undefined control sequence.
+l.5         \n
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb:6: Undefined control sequence.
+l.6         \n
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+) [11
+
+])
+No file main.toc.
+[12
+
+] (/Users/marcolyu/Desktop/MATH 156 Final Project./sections/knn.tex
+\openout4 = `main.vrb'.
+
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
+(Font)              scaled to size 10.95pt on input line 5.
+) [13
+
+] (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb) [14
+
+]
+\openout4 = `main.vrb'.
+
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 7.0pt on input line 7.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
@@ -1149,7 +1257,7 @@ LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 7.0pt on input line 7.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 5.0pt on input line 7.
-<graphs/knn_choice_n.png, id=182, 422.0568pt x 312.2064pt>
+<graphs/knn_choice_n.png, id=411, 422.0568pt x 312.2064pt>
 File: graphs/knn_choice_n.png Graphic file (type png)
 <use graphs/knn_choice_n.png>
 Package pdftex.def Info: graphs/knn_choice_n.png  used on input line 12.
@@ -1158,60 +1266,66 @@ Package pdftex.def Info: graphs/knn_choice_n.png  used on input line 12.
 Overfull \vbox (1.61496pt too high) detected at line 61
  []
 
-[6
+[15
 
- </Users/marcolyu/Desktop/Presentation/graphs/knn_choice_n.png>]
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn_choice_n.png>]
 \openout4 = `main.vrb'.
 
- (/Users/marcolyu/Desktop/Presentation/main.vrb
-<graphs/kd-tree.png, id=217, 371.3875pt x 369.38pt>
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+<graphs/kd-tree.png, id=445, 371.3875pt x 369.38pt>
 File: graphs/kd-tree.png Graphic file (type png)
 <use graphs/kd-tree.png>
 Package pdftex.def Info: graphs/kd-tree.png  used on input line 21.
 (pdftex.def)             Requested size: 129.98756pt x 129.28493pt.
-) [7
+) [16
 
- </Users/marcolyu/Desktop/Presentation/graphs/kd-tree.png>] (/Users/marcolyu/Desktop/Presentation/main.vrb
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/kd-tree.png>] (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
 File: graphs/kd-tree.png Graphic file (type png)
 <use graphs/kd-tree.png>
 Package pdftex.def Info: graphs/kd-tree.png  used on input line 21.
 (pdftex.def)             Requested size: 129.98756pt x 129.28493pt.
-) [8
+) [17
 
 ]
 \openout4 = `main.vrb'.
 
- (/Users/marcolyu/Desktop/Presentation/main.vrb) [9
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb) [18
 
 ]
 \openout4 = `main.vrb'.
 
- (/Users/marcolyu/Desktop/Presentation/main.vrb
-<graphs/knn.png, id=300, 409.7709pt x 346.896pt>
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+<graphs/knn.png, id=528, 409.7709pt x 346.896pt>
 File: graphs/knn.png Graphic file (type png)
 <use graphs/knn.png>
 Package pdftex.def Info: graphs/knn.png  used on input line 19.
 (pdftex.def)             Requested size: 184.3952pt x 156.10175pt.
-) [10
+) [19
 
- </Users/marcolyu/Desktop/Presentation/graphs/knn.png>]) (/Users/marcolyu/Desktop/Presentation/main.toc) [11
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn.png>])
+No file main.toc.
+[20
 
-] (/Users/marcolyu/Desktop/Presentation/sections/random_forest.tex
-<graphs/RandomForest.png, id=357, 2158.0625pt x 945.5325pt>
+] (/Users/marcolyu/Desktop/MATH 156 Final Project./sections/random_forest.tex
+<graphs/RandomForest.png, id=585, 2158.0625pt x 945.5325pt>
 File: graphs/RandomForest.png Graphic file (type png)
 <use graphs/RandomForest.png>
 Package pdftex.def Info: graphs/RandomForest.png  used on input line 12.
 (pdftex.def)             Requested size: 323.6954pt x 141.82375pt.
-
+pdfTeX warning (ext4): destination with the same identifier (name{fig:N20}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.12 \end{frame}
+                
 Overfull \vbox (0.6881pt too high) detected at line 12
  []
 
-[12
+[21
 
- </Users/marcolyu/Desktop/Presentation/graphs/RandomForest.png (PNG copy)>] [13
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/RandomForest.png (PNG copy)>] [22
 
 ]
-<graphs/random_forest.png, id=412, 409.7709pt x 346.896pt>
+<graphs/random_forest.png, id=638, 409.7709pt x 346.896pt>
 File: graphs/random_forest.png Graphic file (type png)
 <use graphs/random_forest.png>
 Package pdftex.def Info: graphs/random_forest.png  used on input line 33.
@@ -1224,14 +1338,16 @@ l.33 \end{frame}
 Overfull \vbox (31.31192pt too high) detected at line 33
  []
 
-[14
+[23
 
- </Users/marcolyu/Desktop/Presentation/graphs/random_forest.png>]) (/Users/marcolyu/Desktop/Presentation/main.toc) [15
+ </Users/marcolyu/Desktop/MATH 156 Final Project./graphs/random_forest.png>])
+No file main.toc.
+[24
 
-] (/Users/marcolyu/Desktop/Presentation/sections/ann.tex
+] (/Users/marcolyu/Desktop/MATH 156 Final Project./sections/ann.tex
 \openout4 = `main.vrb'.
 
- (/Users/marcolyu/Desktop/Presentation/main.vrb) [16
+ (/Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb) [25
 
 ])
 \tf@nav=\write6
@@ -1243,33 +1359,43 @@ Overfull \vbox (31.31192pt too high) detected at line 33
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
- 
+
+
+Package lastpage Warning: Rerun to get the references right on input line 134.
+
+
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
-(/Users/marcolyu/Desktop/Presentation/main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 87381F7869AD18FFDD1508048449EB8B;184.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 134.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
+(/Users/marcolyu/Desktop/MATH 156 Final Project./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
 
 
-LaTeX Warning: There were multiply-defined labels.
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  CEA29646610F446CCDF718C8D283D46A;237.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 26739 strings out of 492616
- 515036 string characters out of 6129482
- 784420 words of memory out of 5000000
- 29944 multiletter control sequences out of 15000+600000
+ 26745 strings out of 492616
+ 515483 string characters out of 6129482
+ 854768 words of memory out of 5000000
+ 29931 multiletter control sequences out of 15000+600000
  39498 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,97p,808b,1876s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/marcolyu/Desktop/Presentation/main.pdf (16 pages, 419952 bytes).
+ 56i,15n,97p,821b,1758s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "/Users/marcolyu/Desktop/MATH 156 Final Project./main.pdf" (25 pages, 924191 bytes).
 PDF statistics:
- 550 PDF objects out of 1000 (max. 8388607)
- 495 compressed objects within 5 object streams
- 37 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 781 PDF objects out of 1000 (max. 8388607)
+ 704 compressed objects within 8 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 
