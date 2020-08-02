@@ -55,7 +55,7 @@ The RMSEs computed are listed below.
 * `RMSE_kNN = 0.3315`
 * `RMSE_ANN = 0.3562`
 
-The RMSE of the artificial neural network goes to $\boxed{0.3291}$ if we increase the number of epochs to $200$.
+The RMSE of the artificial neural network goes to 0.3291 if we increase the number of epochs to 200.
 
 ## Authors
 
