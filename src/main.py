@@ -1,9 +1,18 @@
+"""
+================================================
+== 	Filename: main.py
+== 	Author: Yi Lyu
+==	Status: Complete
+================================================
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import pickle
 import os
+from sklearn.decomposition import PCA
 from keras.models import load_model
 from sklearn.model_selection import train_test_split
 
@@ -12,7 +21,7 @@ from models import *
 from plotting import *
 
 def read_data():
-    videogames = Videogames(get_dir("data/math156.db"))
+    videogames = Videogames(get_dir("data/.math156.db"))
     videogames.read_data_in(get_dir("data/videogames.csv"), "VIDEOGAMES", True)
     res = np.array(videogames.execute('''
         SELECT name, g_total, cscore, uscore, genre, publisher FROM (
@@ -49,37 +58,26 @@ if __name__ == "__main__":
     X = pd.concat((scores, genre, publisher), axis=1).astype('float64')
     Y = res['gtotal'].astype('float64')
 
+
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= .20, train_size=.80, random_state = 40)
 
     try:
-        with open(get_dir('data/models.pickle'), 'rb') as f:
+        with open(get_dir('data/.models.pickle'), 'rb') as f:
             rfregr, knnregr = pickle.load(f)
-            #annregr = load_model(get_dir('data/ann'))
+            annregr = load_model(get_dir('data/.ann'))
     except:
-        #annregr = ann(X_train, Y_train.ravel())            ## ANN
+        annregr = ann(X_train, Y_train.ravel())            ## ANN
         rfregr = random_forest(X_train, Y_train.ravel())   ## Random Forest
         knnregr = knn(X_train, Y_train.ravel())            ## KNN
-        with open(get_dir('data/models.pickle'), 'wb+') as f:
+        with open(get_dir('data/.models.pickle'), 'wb+') as f:
             pickle.dump((rfregr, knnregr), f, pickle.HIGHEST_PROTOCOL)
-            #annregr.save(get_dir('data/ann'))
+            annregr.save(get_dir('data/.ann'))
 
     print("The mean is", np.mean(Y))
     ## RMSE
     rmse_template='RMSE\t{name:25}{value:18}'
     print(rmse_template.format(name='random forest', value=rmse(X_test, Y_test, rfregr)))
     print(rmse_template.format(name='Knn', value=rmse(X_test, Y_test, knnregr)))
-    #print(rmse_template.format(name='ANN', value=rmse(X_test, Y_test, annregr)))
+    print(rmse_template.format(name='ANN', value=rmse(X_test, Y_test, annregr)))
 
-    #plot_predictions(X_test, Y_test, rfregr, knnregr, annregr)
-
-    """
-
-    print('=====================================')
-
-    ## R2
-    r2_template = 'R^2\t{name:25}{value:18}'
-    print(r2_template.format(name='random forest', value=rfregr.score(X_test, Y_test)))
-    print(r2_template.format(name='Knn', value=knnregr.score(X_test, Y_test)))
-    print(r2_template.format(name='Aan', value=annregr.score(X_test, Y_test)))
-
-    """
+    plot_predictions(X_test, Y_test, rfregr, knnregr, annregr)

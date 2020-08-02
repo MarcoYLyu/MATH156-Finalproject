@@ -1,3 +1,11 @@
+"""
+================================================
+== 	Filename: plotting.py
+== 	Author: Yi Lyu
+==	Status: Complete
+================================================
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd

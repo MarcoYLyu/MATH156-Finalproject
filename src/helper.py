@@ -1,3 +1,11 @@
+"""
+================================================
+== 	Filename: helper.py
+== 	Author: Yi Lyu
+==	Status: Complete
+================================================
+"""
+
 import numpy as np
 import pandas as pd
 import pickle
@@ -27,7 +35,7 @@ class Videogames(object):
         self.database_dir = database_dir
         self.table = ''
         self.data_dir = data_dir
-        self.storage = '{0}.pickle'.format(storage)
+        self.storage = '.{0}.pickle'.format(storage)
         
         self._has_data = False
         self._headers = []

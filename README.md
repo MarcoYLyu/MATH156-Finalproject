@@ -1,4 +1,5 @@
 # MATH156-Finalproject
+
 * *This repository contains the implementation of: **Predicting the Sale of Video Game**, the final project of Math156 group5 at UCLA. In this project, we will investigate and attempt to model the global sales of video games by using
 local sales, critic scores, user scores, and other indicators.*
 
@@ -11,6 +12,7 @@ local sales, critic scores, user scores, and other indicators.*
 
 
 ## Preview
+
 * **Motivation:**
 The expansion of the video game industry in recent decades has fueled gamers and game studios
 all over the world. Creating a video game is an intensive project that requires a diverse array of
@@ -41,4 +43,5 @@ determining performance of regression models.
 * **Kevin Weng, Chen Li, Yi Lyu, Omar Hafez** - *at UCLA* -
 
 ## Acknowledgments
+
 * The is the Final Project of Math156 Summer 2020 UCLA.

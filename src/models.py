@@ -1,3 +1,11 @@
+"""
+================================================
+== 	Filename: models.py
+== 	Author: Yi Lyu
+==	Status: Complete
+================================================
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Ridge
@@ -26,13 +34,13 @@ def plot_knn(ns, rmses):
     plt.clf()
 
 def knn(xs, ys, n=10):
-    X_train, X_test, Y_train, Y_test = train_test_split(xs, ys, test_size= .1, random_state = 40)
-    num_cols = len(X_train.columns)
+    #X_train, X_test, Y_train, Y_test = train_test_split(xs, ys, test_size= .1, random_state = 40)
+    num_cols = len(xs.columns)
     i = 5
 
     best_index = 4
     best_score = 10000
-    nums = [i for i in range(5, int(np.sqrt(num_cols)) + 5)]
+    nums = [i for i in range(5, int(np.sqrt(num_cols)))]
     cvs = []
 
     for num in nums:
@@ -44,35 +52,14 @@ def knn(xs, ys, n=10):
             best_index = num
     print(best_index)
     return KNeighborsRegressor(n_neighbors=best_index, algorithm='kd_tree', weights='distance').fit(xs, ys)
-    """
-
-    best_model = KNeighborsRegressor(n_neighbors=i, algorithm='kd_tree', weights='distance').fit(X_train, Y_train)
-    best_rmse = rmse(X_test, Y_test, best_model)
-
-    ### Cross Validation
-    ns = [n]
-    rmses = [best_rmse]
-    cvs = []
-    ### You can change 5 to * 2 or * 3 here for a better result, but slower.
-    for n in range(i, int(np.sqrt(num_cols)) + 5):
-        model = KNeighborsRegressor(n_neighbors=n, algorithm='kd_tree', weights='distance').fit(X_train, Y_train)
-        temp = rmse(X_test, Y_test, model)
-        ns.append(n)
-        rmses.append(temp)
-        if temp < best_rmse:
-            best_model = model
-            best_rmse = temp
-    plot_knn(ns, rmses)
-
-    """
 
     return best_model
 
 def ann(xs, ys):
     n = len(xs.columns)
     ANN = Sequential()
-    ANN.add(Dense(units = 6, activation = "elu", input_dim = n))
-    ANN.add(Dense(units = 4, activation = "elu"))
+    ANN.add(Dense(units = 6, activation = "relu", input_dim = n))
+    ANN.add(Dense(units = 4, activation = "relu"))
     ANN.add(Dense(units = 1))
 
     ANN.compile(optimizer = "adam", loss = "mean_squared_error")
