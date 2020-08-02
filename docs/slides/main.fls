@@ -1,9 +1,9 @@
-PWD /Users/marcolyu/Desktop/MATH 156 Final Project.
+PWD /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides
 INPUT /usr/local/texlive/2019/texmf.cnf
 INPUT /usr/local/texlive/2019/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.tex
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.log
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.tex
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.log
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamer.cls
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamer.cls
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -213,7 +213,7 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemedefaul
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamericonbook.pdf
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.pdf
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.pdf
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamericonbook.pdf
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamericonbook.20.pdf
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamericonbook.20.pdf
@@ -354,9 +354,9 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.aux
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.aux
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.aux
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.aux
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.aux
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.aux
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
@@ -374,7 +374,13 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -389,6 +395,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-theorem
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/upquote/upquote.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/upquote/upquote.sty
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.nav
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.nav
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1.tfm
@@ -402,8 +410,12 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumT-
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1--base.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumT-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1--base.tfm
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/preprocess.tex
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/preprocess.tex
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/preprocess.tex
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/preprocess.tex
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
@@ -438,43 +450,45 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/wasy/wasy6.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1.tfm
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/headdata.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/headdata.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/headdata.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/headdata.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/headdata.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/headdata.png
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumT-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1--base.tfm
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/rating.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/rating.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/rating.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/correlationmat.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/correlationmat.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/correlationmat.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/plotcorr.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/plotcorr.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/plotcorr.png
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/rating.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/rating.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/rating.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/correlationmat.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/correlationmat.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/correlationmat.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/plotcorr.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/plotcorr.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/plotcorr.png
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/inconsolata/ot1-zi4r-0.tfm
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/improvement.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/improvement.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/improvement.png
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/knn.tex
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/knn.tex
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/improvement.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/improvement.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/improvement.png
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/knn.tex
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/knn.tex
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTB-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumTB-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTB-tlf-ot1--base.tfm
@@ -482,11 +496,11 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumTI
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1--base.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumTI-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1--base.tfm
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
@@ -509,57 +523,61 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1.tfm
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn_choice_n.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn_choice_n.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn_choice_n.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/knn_choice_n.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/knn_choice_n.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/knn_choice_n.png
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumTI-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1--base.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumTI-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1--base.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumT-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1--base.tfm
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/kd-tree.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/kd-tree.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/kd-tree.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/kd-tree.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/kd-tree.png
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/kd-tree.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/kd-tree.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/kd-tree.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/kd-tree.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/kd-tree.png
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumTI-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTI-tlf-ot1--base.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/public/libertine/LinBiolinumT-tlf-ot1.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1--base.tfm
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/knn.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/random_forest.tex
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/random_forest.tex
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/RandomForest.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/RandomForest.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/RandomForest.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/random_forest.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/random_forest.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./graphs/random_forest.png
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/ann.tex
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./sections/ann.tex
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.vrb
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.nav
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.toc
-OUTPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.snm
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.aux
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.out
-INPUT /Users/marcolyu/Desktop/MATH 156 Final Project./main.out
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/knn.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/knn.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/knn.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/random_forest.tex
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/random_forest.tex
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/RandomForest.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/RandomForest.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/RandomForest.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/random_forest.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/random_forest.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/graphs/random_forest.png
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/ann.tex
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/sections/ann.tex
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.vrb
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.nav
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.toc
+OUTPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.snm
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.aux
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
+INPUT /Users/marcolyu/Documents/workspace/video-game-sales-predictor/docs/slides/main.out
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb
