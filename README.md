@@ -28,9 +28,10 @@ global video game sales.
 We plan on attempting [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis) to obtain a model for global game sales. A
 justification for using this model is that because our desired output is a continuous quantity,
 regression techniques are appropriate. We will study the performances of:  
-    * [Artificial Neural Network](https://en.wikipedia.org/wiki/Artificial_neural_network)  
-    * [Random Forest](https://en.wikipedia.org/wiki/Random_forest)  
-    * [K-nearest neighbors](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)   
+
+* [Artificial Neural Network](https://en.wikipedia.org/wiki/Artificial_neural_network)  
+* [Random Forest](https://en.wikipedia.org/wiki/Random_forest)  
+* [K-nearest neighbors](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)   
 
 ## Data set
 
