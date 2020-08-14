@@ -63,7 +63,7 @@ def ann(xs, ys):
     ANN.add(Dense(units = 1))
 
     ANN.compile(optimizer = "adam", loss = "mean_squared_error")
-    ANN.fit(xs, ys, batch_size = 2, epochs = 100)
+    ANN.fit(xs, ys, batch_size = 2, epochs = 40)
     return ANN
 
 def gamma_model(xs, ys):

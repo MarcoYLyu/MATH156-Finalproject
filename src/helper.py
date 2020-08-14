@@ -12,9 +12,7 @@ import pickle
 import sqlite3
 import re
 import os
-from sklearn.impute import SimpleImputer as Imputer
-from sklearn.impute import KNNImputer
-from sklearn.preprocessing import LabelEncoder
+from algorithms import svd_impute
 
 __all__ = ['Videogames']
 
@@ -105,10 +103,8 @@ class Videogames(object):
         return data
 
     def _imputation(self, data):
-        imp = Imputer(strategy='median')
         attributes = ['Critic_Score', 'User_Score', 'Critic_Count', 'User_Count']
-        for item in attributes:
-            data[item] = imp.fit_transform(data[[item]]).ravel()
+        data[attributes] = svd_impute(data[attributes], k=3, num_iter=6)
         return data
 
     def get_col(self, *header):
