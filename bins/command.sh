@@ -96,6 +96,6 @@ case $1 in
         ;;
     *)
         echo "Unknown option argument: $1"
-        echo "More info: ./$0 --help"
+        echo "More info: $0 --help"
         ;;
 esac
