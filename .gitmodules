@@ -1,0 +1,6 @@
+[submodule "src/algorithms/eigen"]
+	path = src/algorithms/eigen
+	url = https://github.com/libigl/eigen.git
+[submodule "src/algorithms/pybind11"]
+	path = src/algorithms/pybind11
+	url = https://github.com/pybind/pybind11.git
