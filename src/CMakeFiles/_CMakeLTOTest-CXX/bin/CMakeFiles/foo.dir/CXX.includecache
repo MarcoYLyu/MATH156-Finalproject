@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/marcolyu/Documents/workspace/video-game-sales-predictor/src/CMakeFiles/_CMakeLTOTest-CXX/src/foo.cpp
+

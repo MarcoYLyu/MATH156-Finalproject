@@ -104,7 +104,8 @@ class Videogames(object):
 
     def _imputation(self, data):
         attributes = ['Critic_Score', 'User_Score', 'Critic_Count', 'User_Count']
-        data[attributes] = svd_impute(data[attributes], k=3, num_iter=6)
+        svd_data = data[attributes].replace(np.nan, 0)
+        data[attributes] = svd_impute(svd_data, k=3, num_iter=6)
         return data
 
     def get_col(self, *header):
