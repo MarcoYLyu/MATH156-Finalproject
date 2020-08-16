@@ -1,4 +1,4 @@
-// #define EIGEN_USE_MKL_VML
+#define EIGEN_USE_MKL_ALL
 
 #include <iostream>
 #include <iterator>
