@@ -12,7 +12,9 @@ import pickle
 import sqlite3
 import re
 import os
+import time
 from algorithms import svd_impute
+## from algorithms.algorithms import svd_impute
 
 __all__ = ['Videogames']
 
@@ -99,10 +101,12 @@ class Videogames(object):
         data = data.replace(r'tbd', np.nan, regex=True)
         data['User_Score'] = data['User_Score'].astype(np.float64)
         condition = (data['Platform'].notnull() & data['Genre'].notnull() & data['Publisher'].notnull() & data['Year_of_Release'].notnull())
-        data = self._imputation(data[condition])
+        start_time = time.time()
+        data = self._impute(data[condition])
+        print("----------Imputation used %s seconds ----------" % (time.time() - start_time))
         return data
 
-    def _imputation(self, data):
+    def _impute(self, data):
         attributes = ['Critic_Score', 'User_Score', 'Critic_Count', 'User_Count']
         svd_data = data[attributes].replace(np.nan, 0)
         data[attributes] = svd_impute(svd_data, k=3, num_iter=6)
@@ -229,3 +233,7 @@ class Videogames(object):
     def _col2list(self, col):
         n = len(col[0])
         return list(map(lambda x: list(x)[:n], col))
+
+if __name__ == "__main__":
+    videogames = Videogames(get_dir("data/.math156.db"))
+    videogames.read_data_in(get_dir("data/videogames.csv"), "VIDEOGAMES", True)
