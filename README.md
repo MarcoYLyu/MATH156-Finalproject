@@ -28,7 +28,3 @@ You can see the plots created in `graphs/`. Use `help` for more information abou
 
 ``> ./bin/vgsales.sh --help``
 
-## TO-DO
-
-Provide a Java Web Application for the Video games Sales prediction and search with autocomplete implemented.
-
